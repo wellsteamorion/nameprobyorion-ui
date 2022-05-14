@@ -1,0 +1,258 @@
+<div class="main-content">
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title" *ngIf="this.loggedInUser.userId
+                                             !=this.profileData.userid">
+                            {{this.profileData?.firstname}}'s Profile</h4>
+                        <h4 class="card-title" *ngIf="this.loggedInUser.userId
+                        ==this.profileData.userid" >My Profile</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <div style=" margin-left: auto;
+                          margin-right: auto;
+                          width: 50px">
+                            <mat-spinner [diameter]="50" *ngIf="!dataLoaded"></mat-spinner>
+                        </div>
+                        <form *ngIf="dataLoaded">
+                            <div style="padding:5px" class="row">
+
+                                <div class="col-md-4">
+                                    <span style="font-weight:1000"><b>User Name :</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 20px;
+                  font-weight:500">{{this.profileData.userid}}</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <span style="font-weight:1000"><b>Email Id:</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 44px;
+                  font-weight:500">{{this.profileData.emailid}}</span>
+                                </div>
+                            </div>
+                            <div style="padding:5px" class="row">
+
+                                <div class="col-md-4">
+                                    <span style="font-weight:1000"><b>First Name :</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 20px;
+                  font-weight:500">{{this.profileData.firstname}}</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <span style="font-weight:1000"><b>Last Name:</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 30px;
+                  font-weight:500">{{this.profileData.lastname}}</span>
+                                </div>
+                            </div>
+
+                            <div style="padding:5px" class="row">
+
+                                <div class="col-md-4">
+                                    <span style="font-weight:1000"><b>Locale :</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 44px;
+                  font-weight:500">{{this.profileData.locale}}</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <span style="font-weight:1000"><b>Preferred Name :</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 2px;
+                  font-weight:500">{{this.profileData.preferedname}}</span>
+                                </div>
+                            </div>
+
+
+
+                            <div style="padding:5px" class="row">
+
+                                <div class="col-md-4">
+                                    <span style="font-weight:1000"><b> City :</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 61px;
+                  font-weight:500">{{this.profileData.city}}</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <span style="font-weight:1000"><b>Country:</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 47px;
+                  font-weight:500">{{this.profileData.country}}</span>
+                                </div>
+
+                            </div>
+                            <div style="padding:5px" class="row">
+
+                                <div class="col-md-8">
+                                    <span style="font-weight:1000"><b> Manager Name :</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 20px;
+                  font-weight:500">Paul, Biju</span>
+                                </div>
+
+                            </div>
+                            <div style="padding:5px" class="row">
+
+                                <div class="col-md-8">
+                                    <span style="font-weight:1000"><b> Skill set :</b></span> <span style="display: inline;
+                  position:relative;
+                  margin-left: 63px;
+                  font-weight:500">{{this.profileData.skills}}</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-profile"  *ngIf="dataLoaded">
+                    <div class="card-avatar">
+                        <a href="javascript:void(0)">
+                            <img class="img"
+                                 src={{this.profileData.imageurl}}/>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-category text-gray">{{this.profileData.title}}</h6>
+                        <h4 class="card-title">{{this.profileData.fullname}}</h4>
+                        <p class="card-description">
+                            {{this.profileData.bio}}
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Standard Pronunciation</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <div style=" margin-left: auto;
+                          margin-right: auto;
+                          width: 50px">
+                            <mat-spinner [diameter]="50" *ngIf="!dataLoaded"></mat-spinner>
+                        </div>
+                        <form *ngIf="dataLoaded">
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-8">-->
+<!--                                    <span style="font-weight:1000"><b>Preferred Name :</b></span> <span style="display: inline;-->
+<!--                              position:relative;-->
+<!--                              margin-left: 2px;-->
+<!--                              font-weight:500">{{this.profileData.preferedname}}</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="row"   style="margin-top: 10px">
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Language</mat-label>
+                                        <mat-select (selectionChange)="onChange($event)" required
+                                                    [(value)]=this.profileData.locale>
+                                            <mat-option *ngFor="let lang of languages" [value]="lang.value">
+                                                {{lang.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Voice</mat-label>
+                                        <mat-select (selectionChange)="onChangeofVoice($event)" required
+                                                    [(value)]=this.selectedVoice>
+                                            <mat-option *ngFor="let voice of voiceNames" [value]="voice.value">
+                                                {{voice.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                <span style="    color: red;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 500" *ngIf="this.notSelectedValidationFailed">*Please Select a Value</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div style="    margin-left: auto;
+                          margin-right: auto;
+                          width: 50px">
+                                    <mat-spinner [diameter]="50" *ngIf="voiceLoader"></mat-spinner>
+                                    <button *ngIf="!voiceLoader" mat-raised-button color="primary"
+                                            (click)="onPlayStandard()" [disabled]=" checkPlay()">
+                                        <mat-icon>play_arrow</mat-icon>
+                                        Play
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div style="margin-top: 10px" *ngIf="this.fileUploadedAndApproved" class="row">
+                                <div style="    margin-left: auto;
+                          margin-right: auto;">
+
+                                    <span
+                                    style="color: red;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 500">Note: Standard Pronunciation disabled because user have custom pronunciation set!
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" *ngIf="dataLoaded">
+                <app-recorded [employeeId]="this.profileData.employeeid"
+                              [userid]="this.profileData.userid"></app-recorded>
+
+            </div>
+
+            <div class="col-md-6" *ngIf="!dataLoaded">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Recorded Pronunciation</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <div style=" margin-left: auto;
+                          margin-right: auto;
+                          width: 50px">
+                            <mat-spinner [diameter]="50" *ngIf="!dataLoaded"></mat-spinner>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div style="margin-left: 24px;
+                color: green;
+                 font-weight: 500">
+            Playback count: {{playbackcount}}
+
+        </div>
+
+    </div>
+
+
+</div>
+
+

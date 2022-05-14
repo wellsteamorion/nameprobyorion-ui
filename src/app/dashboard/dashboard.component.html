@@ -1,0 +1,49 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-lg-8 col-md-12">
+                <div class="card">
+
+
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Pending Approvals</h4>
+
+                    </div>
+                    <div class="card-body table-responsive">
+                        <div style="     margin-left: 500px;
+                            width: 50px">
+                            <mat-spinner [diameter]="50" *ngIf="!isDataAvailable"></mat-spinner>
+                        </div>
+                        <table class="table table-hover" *ngIf="isDataAvailable">
+
+                            <thead class="text-warning">
+                                <th>Employee Id</th>
+                                <th>User ID</th>
+                                <th>Employee Name</th>
+                                <th>Recorded By</th>
+                                <th>Last recorded</th>
+
+                            </thead>
+
+                            <tbody >
+                                    <tr *ngFor="let userInfo of this.pendingApprovals">
+                                        <td><a    [routerLink]="['/user-profile']"
+                                            [queryParams]="{'userId': userInfo.uid }"  href="#">{{userInfo.employeeid}}</a></td>
+                                        <td>{{userInfo.uid}}</td>
+                                        <td>{{userInfo.employeeName}}</td>
+                                        <td>{{userInfo.recordedbyname}}</td>
+                                        <td>{{userInfo.recordedbydate | date:'dd/MM/yyyy'}}</td>
+                                    </tr>
+                             </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+            <!-- <router-outlet></router-outlet> -->
+    </div>
+</div>

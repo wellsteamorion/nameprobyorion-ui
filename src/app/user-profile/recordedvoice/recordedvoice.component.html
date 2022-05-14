@@ -1,0 +1,192 @@
+<div class="card">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title">Preferred Pronunciation</h4>
+
+    </div>
+    <div class="card-body">
+        <div style=" margin-left: auto;
+                          margin-right: auto;
+                          width: 50px">
+            <mat-spinner [diameter]="50" *ngIf="loader"></mat-spinner>
+        </div>
+        <div style="text-align:center;" *ngIf="!loader">
+            <div *ngIf="!fileFound && (this.isLoggedInUser || this.isAdmin)">
+                <div class="row">
+                    <div class="col-md-3">
+                    <button style="width: 133%;" (click)="initiateRecording()" class="btn btn-primary" *ngIf="!recording"
+                            style="cursor: pointer;background-color: green;color: white;font-size: 12px;"> Record
+                    </button>
+
+                    <button (click)="stopRecording()" class="btn btn-danger" *ngIf="recording"
+                            style="cursor: pointer;background-color: red;color: white;font-size: 12px;"> Stop
+                    </button>
+
+                    </div>
+                    <div style="    margin-top: 20px;
+    font-weight: 1000" class="col-md-2">
+                        <span>OR</span>
+                    </div>
+                    <div style="    margin-top: -10px" class="col-md-3">
+
+
+                            <div>
+                                <mat-toolbar style="    width: 242%;
+    /* border: 2px solid; */
+    padding-top: 0px;
+    margin-top: 7px">
+                                    <!-- Browse Button -->
+
+
+                                    <button  style="width: 30px" mat-flat-button color="primary"><mat-icon>cloud_upload</mat-icon></button>
+                                    <input  style="margin-left: 5px;font-size: 13px;width: 200px" matInput [(ngModel)]="fileAttr" readonly name="name" />
+                                    <!-- Display files names -->
+
+<!--                                    <button *ngIf="fileAttr!==''" mat-flat-button color="primary">Upload</button>-->
+
+                                </mat-toolbar>
+                                <!-- Fetch selected filed on change -->
+                                <input placeholder="Choose .wav file"
+                                        type="file"
+                                        #fileInput
+                                        id="uploadFile"
+                                        (change)="onChange($event)"
+                                        name="uploadFile"
+
+
+                                />
+                            </div>
+
+                    </div>
+                </div>
+                <div style="    color: red;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 500 ; margin-left: 50px;" *ngIf="this.invalidFileFormat">*Not a Valid File</div>
+
+            </div>
+            <div class="clearfix"></div>
+
+            <div style=" margin-left: auto;
+                          margin-right: auto;
+                          width: 50px">
+                <mat-spinner [diameter]="50" *ngIf="fileUploadInProgress"></mat-spinner>
+            </div>
+            <mat-spinner [diameter]="50" *ngIf="voiceLoader"></mat-spinner>
+            <div *ngIf="showRecording()">
+                <div class="row">
+                    <div class="col-md-4">
+                        <button mat-raised-button color="primary"
+                                (click)="onPlayStandard()">
+                            <mat-icon>play_arrow</mat-icon>
+                            Play
+                        </button>
+                    </div>
+
+                    <div class="col-md-4" *ngIf="this.isAdmin  || this.isLoggedInUser">
+                        <button mat-raised-button color="warn"
+                                (click)="onDelete()">
+                            <mat-icon>delete</mat-icon>
+                            Delete
+                        </button>
+                    </div>
+                    <div class="col-md-4"  *ngIf="(this.recordedData?.status==='Pending' || this.recordedData?.status==='Declined') &&  (this.isLoggedInUser || this.isAdmin)">
+
+
+                        <div style="margin-top:10px;margin-left: -44px">
+                            <span style=" font-weight: 1000"> Status:</span>
+
+                            <span [ngStyle]="{'color': this.recordedData?.status === 'Pending'? 'orange' :
+                           ( this.recordedData?.status === 'Approved'? 'Green' : 'red')
+
+                            }"
+                                style="font-style: italic;  font-weight: 500; margin-left: 2px">
+                    {{this.recordedData?.status}}
+
+                        </span>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div style="    text-align: left; margin-top: 10px;
+    font-weight: 500;
+    margin-left: 10px;" class="row">
+                    Click on 'Play' to play back the preferred name pronunciation that is set by user.
+                </div>
+                <div style="    text-align: left;
+    font-weight: 500;
+    margin-left: 10px;" class="row">
+                    <span style=" font-weight: 1000"> Recorded by:</span> <span
+                        style="font-style: italic;  font-weight: 500; margin-left: 15px">
+                    {{this.recordedData?.recordedbyname}}</span>
+
+                    <div style="    text-align: left;
+    font-weight: 500;
+    margin-left: 10px;">
+                        <span style=" font-weight: 1000">  Recorded on:</span> <span style="font-style: italic;
+                     font-weight: 500; margin-left: 15px">{{this.recordedData?.recordedbydate | date:'dd/MM/yyyy'}}</span>
+                    </div>
+                </div>
+
+                <div *ngIf="this.recordedData?.status === 'Approved' &&  (this.isLoggedInUser || this.isAdmin)" style="    text-align: left;
+    font-weight: 500;
+    margin-left: 10px;" class="row">
+                    <span style=" font-weight: 1000">Approved by:</span> <span
+                        style="font-style: italic; ; margin-left: 15px; font-weight: 500">
+                    {{this.recordedData?.approvedbyname}}</span>
+                </div>
+
+                <div *ngIf="this.recordedData?.status === 'Declined'&& (this.isLoggedInUser || this.isAdmin)" style="    text-align: left;
+    font-weight: 500;
+    margin-left: 10px;" class="row">
+                    <span style=" font-weight: 1000">Declined by:</span> <span
+                        style="font-style: italic; ; margin-left: 15px; font-weight: 500">
+                    {{this.recordedData?.approvedbyname}}</span>
+                </div>
+
+                <div div *ngIf="this.recordedData?.status === 'Declined'&& (this.isLoggedInUser || this.isAdmin)"
+                             style="    text-align: left;
+                                font-weight: 500;
+                            margin-left: 10px;" class="row">
+                    <span style=" font-weight: 1000">Reason:</span> <span
+                        style="font-style: italic; ; margin-left: 15px; font-weight: 500">
+                    {{this.recordedData?.reason}}</span>
+                </div>
+
+                <div *ngIf="this.recordedData?.status === 'Pending' && this.isAdmin" class="row" style="margin-top: 15px;
+                    margin-left: 1px">
+                    <div class="col-md-4">
+                        <button mat-raised-button color="primary"
+                                style="background-color: green"
+                                (click)="onApprove()">
+                            <mat-icon>check_circle</mat-icon>
+                            Approve
+                        </button>
+                    </div>
+
+                    <div class="col-md-4">
+                        <button mat-raised-button color="primary"
+                                style="background-color: red"
+                                (click)="onDecline()">
+                            <mat-icon>cancel</mat-icon>
+                            Reject
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <div *ngIf="!showRecording()">
+                <div class="row" style="margin: auto;   ">
+                    <span style=" font-size: 16px;
+    font-weight: 500;
+    margin: auto;
+    margin-top: 15px">There is No custom pronunciation set!</span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
