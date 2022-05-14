@@ -186,6 +186,7 @@ export class RecordedvoiceComponent implements OnInit, OnChanges {
 
     onDelete() {
         this.loader = true;
+        this.fileAttr='Upload a sound file(.wav)';
         this.http.delete(GlobalConstants.URL + 'employee/sound/' + this.employeeID, {
             responseType: 'blob'
         })
