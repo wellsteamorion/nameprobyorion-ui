@@ -1,51 +1,85 @@
 <div class="container">
-<!--  <div class="logo"  >-->
-<!--    <a  class="simple-text">-->
-<!--      <div class="logo-img">-->
-<!--        <img src="/assets/img/angular2-logo-red.png"/>-->
-<!--      </div>-->
-<!--      Name Pro-->
-<!--    </a>-->
-<!--  </div>-->
-  <div class="card" style="width:50%;margin: auto;margin-top:175px;">
 
-    <div class="card-header card-header-danger">
-      <h4 class="card-title">Login</h4>
+    <div style="width:50%;margin-left: auto;margin-right: auto;margin-top:140px;">
+        <a class="simple-text">
+            <div class="logo-img" style="       display: inline;
+    position: relative">
+                <img src="/assets/img/angular2-logo-red.png"/>
+            </div>
+            <div style="font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    display: inline;
+    margin-left: -17px;
+top: 3px;"> Name Pro
+            </div>
 
+        </a>
     </div>
-    <div class="card-body">
-      <form [formGroup]="LoginForm">
-        <div  class="row">
-          <div class="col-md-4" style="margin: auto">
-            <span style="font-weight:1000"><b>User Name</b></span>
-            <input formControlName="userId" />
-          </div>
-        </div>
-        <div  class="row">
-          <div class="col-md-4"  style="margin: auto">
-            <span style="font-weight:1000"><b>Password</b></span>
-            <input type="password" formControlName="password" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4"  style="margin: auto;">
-            <button class="btn btn-primary" style="width: 162px;    height: 43px" type="button" (click)="login()">
-              Login
-            </button>
 
-          </div>
+    <div class="card" style="width:50%;margin-left: auto;margin-right: auto;">
+
+
+        <div class="card-header card-header-danger">
+            <h4 class="card-title">Employee Login</h4>
 
         </div>
-        <div  >
+        <div class="card-body">
+            <form [formGroup]="LoginForm">
+                <div class="row">
+                    <div class="col-md-4" style="margin: auto">
+                        <span style="font-weight:1000"><b>User Name</b></span>
+                        <input formControlName="userId"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="margin: auto">
+                        <span style="font-weight:1000"><b>Password</b></span>
+                        <input type="password" formControlName="password"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="margin: auto;">
+                        <button style="color: #3f51b5" class="btn btn-primary" style="width: 162px;    height: 43px"
+                                type="button" (click)="login()">
+                            Login
+                        </button>
+
+
+                    </div>
+
+                </div>
+                <div>
 
             <span style="color: red;
     font-size: 16px;
     font-style: italic;
     font-weight: 500;"
-                    *ngIf="incorrectLogin">Incorrect Username or Password</span>
+                  *ngIf="incorrectLogin">Incorrect Username or Password</span>
 
+                </div>
+
+                <div style="position: relative;
+                    margin-top: 13px;
+    float: right;
+    color: #9c27b0;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14px">
+                    <span>- Powered by Team Orion</span>
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
+
+    <div style="width:50%;margin-left: auto;margin-right: auto;">
+    <Span style="font-weight: 500"><a
+                                      href="https://stgwellorionpublic.blob.core.windows.net/orionpublicstorage/Play_Book.pdf"
+                                      download="Play_Book.pdf" target="_blank" >
+         Link
+
+    </a> to download Playbook</Span>
+    </div>
+
+
 </div>

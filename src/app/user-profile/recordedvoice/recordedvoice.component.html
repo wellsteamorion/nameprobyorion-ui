@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header card-header-danger">
-        <h4 class="card-title">Preferred Pronunciation</h4>
+        <h4  class="card-title">Preferred Pronunciation</h4>
 
     </div>
     <div class="card-body">
@@ -112,11 +112,11 @@
                 <div style="    text-align: left; margin-top: 10px;
     font-weight: 500;
     margin-left: 10px;" class="row">
-                    Click on 'Play' to play back the preferred name pronunciation that is set by user.
+                    Playback the preferred name pronunciation that is set by user.
                 </div>
                 <div style="    text-align: left;
     font-weight: 500;
-    margin-left: 10px;" class="row">
+    margin-left: 10px;" class="row" *ngIf="(this.isLoggedInUser || this.isAdmin)">
                     <span style=" font-weight: 1000"> Recorded by:</span> <span
                         style="font-style: italic;  font-weight: 500; margin-left: 15px">
                     {{this.recordedData?.recordedbyname}}</span>
