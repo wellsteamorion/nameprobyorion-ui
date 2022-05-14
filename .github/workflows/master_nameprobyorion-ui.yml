@@ -57,4 +57,4 @@ jobs:
           app-name: 'nameprobyorion-ui'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4694238ABCC743259F83BC89BBA89803 }}
-          package: ./dist/nameprobyorionangula
+          package: ./dist/nameprobyorionangular
