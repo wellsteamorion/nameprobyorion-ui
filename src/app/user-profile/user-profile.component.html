@@ -157,7 +157,7 @@
                                 <div class="col-md-6">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Language</mat-label>
-                                        <mat-select [disabled]=" checkPlay()" (selectionChange)="onChange($event)"
+                                        <mat-select [disabled]=" this.fileUploadedAndApproved" (selectionChange)="onChange($event)"
                                                     required
                                                     [(value)]=this.profileData.locale>
                                             <mat-option *ngFor="let lang of languages" [value]="lang.value">
@@ -170,7 +170,7 @@
                                 <div class="col-md-6">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Voice</mat-label>
-                                        <mat-select [disabled]=" checkPlay()"
+                                        <mat-select [disabled]="this.fileUploadedAndApproved"
                                                     (selectionChange)="onChangeofVoice($event)" required
                                                     [(value)]=this.selectedVoice>
                                             <mat-option *ngFor="let voice of voiceNames" [value]="voice.value">
