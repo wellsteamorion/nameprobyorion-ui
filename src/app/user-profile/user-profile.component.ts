@@ -27,6 +27,7 @@ interface Voice {
 export class UserProfileComponent implements OnInit {
     // private userSub:Subscription;
     isAuthenticated = false;
+    phoneticDisplay= false;
     languages: Language[] = [];
     voiceNames: Voice[] = [];
     dataLoaded = false;
@@ -158,6 +159,7 @@ export class UserProfileComponent implements OnInit {
         this.voiceLoader = true;
         const audio = new Audio();
 
+
         audio.src = GlobalConstants.URL +
             'employee/download?employeeId=' + this.profileData.employeeid +
             '&employeeName=' + this.profileData.preferedname
@@ -178,7 +180,9 @@ export class UserProfileComponent implements OnInit {
 
     setTimeout() {
         setTimeout(() => {
-            this.voiceLoader = false
+            this.voiceLoader = false;
+            this.phoneticDisplay= true;
+
         }, 7000)
     }
 

@@ -5,9 +5,14 @@ public static users:any =[
   {"userId":"U832224","password":"U832224","roles":["USER"]},
   {"userId":"U831231","password":"U831231","roles":["USER"]},
   {"userId":"U832222","password":"U832222","roles":["USER"]},
-  {"userId":"U832223","password":"U832223","roles":["USER"]}
+  {"userId":"U832223","password":"U832223","roles":["USER"]},
+  {"userId":"U832001","password":"U832001","roles":["USER"]},
+  {"userId":"U832002","password":"U832002","roles":["USER"]},
+
+
+
 
   ];
 
-  public static URL: any ="https://nameprobyorion-service.azurewebsites.net/";
+  public static URL: any ="http://localhost:8080/";
 }
