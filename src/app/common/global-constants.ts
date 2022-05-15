@@ -14,5 +14,5 @@ public static users:any =[
 
   ];
 
-  public static URL: any ="http://localhost:8080/";
+  public static URL: any ="https://nameprobyorion-service.azurewebsites.net/";
 }
