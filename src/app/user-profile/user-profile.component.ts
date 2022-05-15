@@ -29,6 +29,7 @@ export class UserProfileComponent implements OnInit {
     isAuthenticated = false;
     phoneticDisplay= false;
     languages: Language[] = [];
+    languagesForSort: Language[] = [];
     voiceNames: Voice[] = [];
     dataLoaded = false;
     voiceLoader = false;
@@ -101,6 +102,10 @@ export class UserProfileComponent implements OnInit {
                         viewValue: element.substring(element.indexOf(':', 0) + 1)
                     });
                 });
+                this.languages.sort((a, b) => a.viewValue < b.viewValue ? -1 :
+                    a.viewValue > b.viewValue ? 1 : 0)
+
+              //  this.languagesForSort = this.languages;
 
                 if (this.profileData.locale !== null && this.profileData.locale !== '') {
 
